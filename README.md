@@ -41,12 +41,7 @@ For a description and a list of available shortcuts click on the faces in the up
 	- imports midi files of type 1
 
 
-Tested with Max 8.2.0 on win10.
-
-pd vanilla needs following libraries: zexy, moocow, mrpeach and hcs. moonlib is needed for the synth in the example.
-
-The handling of the editor is done with pd. The editor might be controlled by any other program using tcp ports 8150 (server) / 8151 (client) for communication.
- 
+Tested with Max 8.2.0 on win10. 
 
 
 ![alt tag](XPianoRoll/gui/buttons/seq1.png)
