@@ -6,7 +6,6 @@
 
 - XPianoRoll uses nw.js for the editor. It's preferable to use the sdk version to see the commands exchanged between pd and nw.
 Console can be opened by F12. nw.js can be downloaded from here:
-
 https://nwjs.io/
 
 - To open nwjs the [shell] object is needed:
