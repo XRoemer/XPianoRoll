@@ -5,7 +5,7 @@ XPianoRoll is a pure midi-editor and written as the gui part of a sequencer. A s
 
 #### download dependencies and third-party utility
 
-- XPianoRoll uses nw.js for the editor. It's preferable to use the sdk version to see the commands exchanged between pd and nw.
+- XPianoRoll uses nw.js for the editor. It's preferable to use the sdk version to see the commands exchanged between max and nw.
 Console can be opened by F12. nw.js can be downloaded from here:
 https://nwjs.io/
 
@@ -17,6 +17,9 @@ https://github.com/jeremybernstein/shell/releases/tag/1.0b3
 Download the XPianoRoll folder to your Max library folder.
 
 Open xpianoroll.maxpat and adjust the path to nw.js inside [p open_gui] 
+
+Tested with Max 8.2.0 on win10. 
+
 
 
 ### Shortcuts and Controls
@@ -41,8 +44,6 @@ For a description and a list of available shortcuts click on the faces in the up
 - MIDI
 	- imports midi files of type 1
 
-
-Tested with Max 8.2.0 on win10. 
 
 
 ![alt tag](XPianoRoll/gui/buttons/seq1.png)
