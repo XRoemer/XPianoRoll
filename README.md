@@ -15,7 +15,7 @@ https://github.com/jeremybernstein/shell/releases/tag/1.0b3
 
 Download the XPianoRoll folder to your Max library folder.
 
-Open pianoroll.maxpat and follow the instructions. 
+Open xpianoroll.maxpat and adjust the path to nw.js inside [p open_gui] 
 
 
 ### Shortcuts and Controls
@@ -41,7 +41,7 @@ For a description and a list of available shortcuts click on the faces in the up
 	- imports midi files of type 1
 
 
-Works with pd vanilla and Purr Data, tested on win7/win10.
+Tested with Max 8.2.0 on win10.
 
 pd vanilla needs following libraries: zexy, moocow, mrpeach and hcs. moonlib is needed for the synth in the example.
 
@@ -49,9 +49,9 @@ The handling of the editor is done with pd. The editor might be controlled by an
  
 
 
-![alt tag](js/gui/buttons/seq1.png)
-![alt tag](js/gui/buttons/seq2.png)
-![alt tag](js/gui/buttons/seq3.png)
+![alt tag](XPianoRoll/gui/buttons/seq1.png)
+![alt tag](XPianoRoll/gui/buttons/seq2.png)
+![alt tag](XPianoRoll/gui/buttons/seq3.png)
 
 
 
