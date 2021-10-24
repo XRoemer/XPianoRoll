@@ -1,5 +1,6 @@
 # Midi Editor/Piano Roll for Max Msp
-
+XPianoRoll is a pure midi-editor and written as the gui part of a sequencer. A sequencer is not part of XPianoRoll and the communication between a sequencer and XPianoRoll has to be created on your own.
+ 
 ### Installation
 
 #### download dependencies and third-party utility
@@ -46,7 +47,7 @@ Tested with Max 8.2.0 on win10.
 
 ![alt tag](XPianoRoll/gui/buttons/seq1.png)
 ![alt tag](XPianoRoll/gui/buttons/seq2.png)
-![alt tag](XPianoRoll/gui/buttons/seq3.png)
+![alt tag](XPianoRoll/gui/buttons/xpianoroll.png)
 
 
 
