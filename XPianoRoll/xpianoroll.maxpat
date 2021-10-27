@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 821.0, 157.0, 949.0, 581.0 ],
+		"rect" : [ 648.0, 149.0, 949.0, 581.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -92,7 +92,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 100.0, 65.0, 321.0, 264.0 ],
+									"patching_rect" : [ 100.0, 65.0, 324.0, 264.0 ],
 									"text" : "ISSUES\n\n- When a pianoroll is closed, all information is lost. That's because all information is stored inside the specific browser window. A solution would be to start a separate nw process to handle all data. For now the user has to store the data himself and send it again on reopening a pianoroll.\n\n- when a pianoroll is closed no new rolls can be opened. \n\n- sometimes the connection gets lost -> press connect button next to the patcher [p open_gui]\n\n- on change of properties items are not redrawn"
 								}
 
@@ -240,6 +240,19 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-7",
+									"linecount" : 17,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 59.0, 222.0, 53.0, 243.0 ],
+									"text" : "32 35 32 48 32 109 101 109 111 114 121 32 99 104 97 110 103 101 32 56 32 112 111 115 32 50 32 49 32 54 52 32 42 32"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-23",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -375,11 +388,11 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 20.0, 18.0, 56.0, 17.0 ],
 									"saved_attribute_attributes" : 									{
-										"activebgcolor" : 										{
+										"activebgoncolor" : 										{
 											"expression" : ""
 										}
 ,
-										"activebgoncolor" : 										{
+										"activebgcolor" : 										{
 											"expression" : ""
 										}
 ,
@@ -550,6 +563,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
+									"order" : 1,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 1 ],
+									"order" : 0,
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -687,8 +709,8 @@
 						"styles" : [ 							{
 								"name" : "Controls",
 								"newobj" : 								{
-									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
-									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ]
+									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ],
+									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -697,8 +719,8 @@
 , 							{
 								"name" : "Game",
 								"default" : 								{
-									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ]
+									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ],
+									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -707,7 +729,11 @@
 , 							{
 								"name" : "PAt_style0",
 								"default" : 								{
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
 									"fontname" : [ "Arial" ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -718,12 +744,8 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
-									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ],
 									"fontsize" : [ 12.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1537,8 +1559,8 @@
 						"styles" : [ 							{
 								"name" : "Controls",
 								"newobj" : 								{
-									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
-									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ]
+									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ],
+									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1547,8 +1569,8 @@
 , 							{
 								"name" : "Game",
 								"default" : 								{
-									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ]
+									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ],
+									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1557,7 +1579,11 @@
 , 							{
 								"name" : "PAt_style0",
 								"default" : 								{
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
 									"fontname" : [ "Arial" ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1568,12 +1594,8 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
-									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ],
 									"fontsize" : [ 12.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1726,7 +1748,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 756.5, 298.0, 152.0, 48.0 ],
+					"patching_rect" : [ 756.5, 298.0, 153.0, 48.0 ],
 					"text" : "click on the faces-icon in the upper left corner of the gui for a description"
 				}
 
@@ -1834,7 +1856,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 590.0, 228.0, 223.0, 22.0 ],
-					"text" : "1 memory clear"
+					"text" : "0 memory change 8 pos 2 1 64"
 				}
 
 			}
@@ -1883,6 +1905,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
@@ -2057,7 +2080,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 121.5, 246.5, 50.0, 22.0 ],
-					"text" : "3"
+					"text" : "0"
 				}
 
 			}
@@ -2637,11 +2660,11 @@
 											"expression" : ""
 										}
 ,
-										"bordercolor" : 										{
+										"activebgcolor" : 										{
 											"expression" : ""
 										}
 ,
-										"activebgcolor" : 										{
+										"bordercolor" : 										{
 											"expression" : ""
 										}
 ,
@@ -4931,8 +4954,8 @@
 						"styles" : [ 							{
 								"name" : "Controls",
 								"newobj" : 								{
-									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
-									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ]
+									"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ],
+									"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4941,8 +4964,8 @@
 , 							{
 								"name" : "Game",
 								"default" : 								{
-									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ]
+									"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ],
+									"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4951,7 +4974,11 @@
 , 							{
 								"name" : "PAt_style0",
 								"default" : 								{
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
 									"fontname" : [ "Arial" ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -4962,12 +4989,8 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
-									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ],
 									"fontsize" : [ 12.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5546,7 +5569,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "itoa.js",
-				"bootpath" : "~/Documents/Max 8/snippets",
+				"bootpath" : "~/Documents/GitHub/XPianoRoll/XPianoRoll",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -5568,8 +5591,8 @@
 		"styles" : [ 			{
 				"name" : "Controls",
 				"newobj" : 				{
-					"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
-					"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ]
+					"accentcolor" : [ 0.0, 0.078431, 0.321569, 1.0 ],
+					"bgcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -5578,8 +5601,8 @@
 , 			{
 				"name" : "Game",
 				"default" : 				{
-					"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-					"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ]
+					"accentcolor" : [ 0.086275, 0.309804, 0.52549, 1.0 ],
+					"bgcolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -5588,7 +5611,11 @@
 , 			{
 				"name" : "PAt_style0",
 				"default" : 				{
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
 					"fontname" : [ "Arial" ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -5599,12 +5626,8 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"color" : [ 0.952941, 0.564706, 0.098039, 1.0 ],
-					"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ],
 					"fontsize" : [ 12.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"clearcolor" : [ 1.0, 0.947758, 0.687073, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

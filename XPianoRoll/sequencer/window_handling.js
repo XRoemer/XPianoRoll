@@ -5,14 +5,34 @@ window.onmouseup = window_mouseup;
 window.onwheel = scroll_window_by_wheel;
 window.onscroll = correct_positions
 
+//window.onbeforeunload = close_window
+
+
 var win = nw_gui.Window.get()
+
+win.on('minimize', function() {
+  console.log('Window is minimized',win);
+});
 
 win.on('close', function() {
   win.removeAllListeners('close');
   log('close', open_windows,window.win_nr)
   delete open_windows[window.win_nr]
+  //win.minimize()
+  //setTimeout(function(){ win.close(true); }, 3000);
   win.close()
+  
 });
+
+function close_window(e){
+  //window.removeAllListeners('close');
+  log('close', open_windows,window.win_nr)
+  delete open_windows[window.win_nr]
+  //win.minimize()
+  setTimeout(function(){ window.close(); }, 3000);
+
+}
+
 
 function correct_positions(e) {
   // correct elements which need to keep their position

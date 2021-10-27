@@ -8,26 +8,44 @@ nw_gui.App.on('open', function (argString) {
   var nr = argString[argString.length - 1]
 
   if (!open_windows[nr]) {
- // search for window with the lowest win_nr
-    // to open a new window just once
-    if(!window.parent_Win) {
-      open_new_sequencer_window(nr)
-    }
+    if (get_win_with_lowest_id()) open_new_sequencer_window(nr)
   }
   else {
-    if (open_windows[nr].closed) open_new_sequencer_window(nr)
+    if (open_windows[nr].closed) {
+      log("win nr",nr," ist geschlossen")
+    	open_new_sequencer_window(nr)
+    }
   }
 });
+
+function get_win_with_lowest_id() {
+  var keys = Object.keys(open_windows)
+  keys.sort()
+  var nr = window.win_nr
+  if (nr == keys[0]) return true
+  else return false
+}
+
 
 function init(){
   // check if nw is already started
   // if not, start tcp connection
   log('init')
+  //window.onclose = close_window
+  log(window)
 
   if (!window.parent_Win){
     var nr = nw_gui.App.argv[0]
     load_scripts_otf({fkt:'load_tcp',scripts:['tools/TCP'],args:[nr]})
-    window.document.title = 'Sequencer ' + nr
+    window.document.title = 'Sequencer ' + nr //+ " Main"
+    if (open_windows[nr]) {
+      log("win existiert")
+      /*try {
+        var items = open_windows[nr].items
+      }
+      catch(err) {log(err)}*/
+      //log(items)
+    }
     open_windows[nr] = this
     window.win_nr = nr
 
@@ -67,6 +85,7 @@ function open_new_sequencer_window(nr) {
     win['open_windows'] = open_windows
     win.tcp = tcp
     open_windows[nr] = win
+    win.onclose = close_window
   }, false);
 }
 
