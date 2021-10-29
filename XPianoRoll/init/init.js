@@ -1,19 +1,20 @@
 // Load native UI library
 var nw_gui = require('nw.gui')
-var test = true
+var test = false
 
 
 nw_gui.App.on('open', function (argString) {
   // get's called from the main window (first opened window)
-  log("open new win from main")
+  
   argString = argString.split(' ')
   var nr = argString[argString.length - 1]
+  //log("open new win from main",nr)
 
   if (!open_windows[nr]) {
     if (get_win_with_lowest_id()) open_new_sequencer_window(nr)
   }
   else {
-    if (open_windows[nr].closed) {
+    if (open_windows[nr].closed && get_win_with_lowest_id()) {
       log("win nr",nr," ist geschlossen")
     	reopen_sequencer_window(nr)
     }
@@ -39,7 +40,7 @@ function init(){
 }
 
 function init_main_win(){
-  log("init main win")
+  //log("init main win")
   // check if nw is already started
   // if not, start tcp connection ???
   var nr = nw_gui.App.argv[0]
@@ -59,7 +60,7 @@ function init_main_win(){
 }
 
 function init_closed_win(nr){
-  log("init closed win")
+  //log("init closed win")
   old_win = open_windows[nr]
   
   items = new Items()
@@ -95,7 +96,7 @@ function init_closed_win(nr){
 
 
 function init_new_win(nr){
-  log("init new win")
+  //log("init new win")
   items = new Items()
   params = new Parameters()
   pointer = new Pointer()
