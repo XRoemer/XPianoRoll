@@ -1,9 +1,11 @@
 // Load native UI library
 var nw_gui = require('nw.gui')
+var test = true
 
 
 nw_gui.App.on('open', function (argString) {
-
+  // get's called from the main window (first opened window)
+  log("open new win from main")
   argString = argString.split(' ')
   var nr = argString[argString.length - 1]
 
@@ -13,7 +15,7 @@ nw_gui.App.on('open', function (argString) {
   else {
     if (open_windows[nr].closed) {
       log("win nr",nr," ist geschlossen")
-    	open_new_sequencer_window(nr)
+    	reopen_sequencer_window(nr)
     }
   }
 });
@@ -26,38 +28,74 @@ function get_win_with_lowest_id() {
   else return false
 }
 
-
 function init(){
-  // check if nw is already started
-  // if not, start tcp connection
+  // called by every window
   log('init')
-  //window.onclose = close_window
-  log(window)
+  var nr = window.win_nr
 
-  if (!window.parent_Win){
-    var nr = nw_gui.App.argv[0]
-    load_scripts_otf({fkt:'load_tcp',scripts:['tools/TCP'],args:[nr]})
-    window.document.title = 'Sequencer ' + nr //+ " Main"
-    if (open_windows[nr]) {
-      log("win existiert")
-      /*try {
-        var items = open_windows[nr].items
-      }
-      catch(err) {log(err)}*/
-      //log(items)
+  if (!window.parent_Win) init_main_win()
+  else if(open_windows[nr]) init_closed_win(nr)
+  else init_new_win(nr)
+}
+
+function init_main_win(){
+  log("init main win")
+  // check if nw is already started
+  // if not, start tcp connection ???
+  var nr = nw_gui.App.argv[0]
+  load_scripts_otf({fkt:'load_tcp',scripts:['tools/TCP'],args:[nr]})
+  window.document.title = 'Sequencer ' + nr + " Main"
+  window.win_nr = nr
+  open_windows[nr] = this
+
+  // used for a hack with window.focus()
+  chrome.windows.getLastFocused(function(wind) {
+    try{
+      window.id = wind.id
     }
-    open_windows[nr] = this
-    window.win_nr = nr
+    catch(e) {log('error: no window')}
+  });
+  init_new_win()
+}
 
-    
-    // used for a hack with window.focus()
-    chrome.windows.getLastFocused(function(wind) {
-      try{
-        window.id = wind.id
-      }
-      catch(e) {log('error: no window')}
-    });
+function init_closed_win(nr){
+  log("init closed win")
+  old_win = open_windows[nr]
+  
+  items = new Items()
+  params = new Parameters()
+  
+  V = old_win.V
+  
+  pointer = new Pointer()
+  copy_settings(pointer,old_win.pointer)
+  pointer.create_pointer()
+  player = new Player()
+  player.create_player()
+  player.init()
+  gui.create_seqgui()
+  main.create_main()
+  gui.init_div_positions()
+  open_windows[nr] = this
+  
+  
+  var val_array = []
+  var dic = old_win.items.dict
+  var vals = Object.values(dic);
+
+  for (var i = 0; i < vals.length; i++) {
+    var v = vals[i]
+    val_array.push([v.id,v.row,v.bar,v.micro,v.cent,v.len_bar,
+                    v.len_micro,v.len_cent,v.vol])      
   }
+  
+  items.set_items(val_array)
+  items.adjust_items()
+}
+
+
+function init_new_win(nr){
+  log("init new win")
   items = new Items()
   params = new Parameters()
   pointer = new Pointer()
@@ -68,6 +106,7 @@ function init(){
   gui.create_seqgui()
   main.create_main()
   gui.init_div_positions()
+  open_windows[nr] = this
 }
 
 
@@ -84,10 +123,29 @@ function open_new_sequencer_window(nr) {
     win.win_nr = nr
     win['open_windows'] = open_windows
     win.tcp = tcp
-    open_windows[nr] = win
-    win.onclose = close_window
+    //open_windows[nr] = win
   }, false);
 }
+
+
+function reopen_sequencer_window(nr) {
+  var old_win = open_windows[nr]
+  var x = old_win.win_w
+  var y = old_win.win_h
+  var path = 'index.html'
+  var name = 'Sequencer ' + nr
+
+  var win = open_win(x,y,V.window_w,V.window_h,name,path)
+  win.parent_Win = window
+  win.addEventListener('load', function(e) {
+    win.document.title = name
+    win.win_nr = nr
+    win['open_windows'] = open_windows
+    win.tcp = tcp
+    //open_windows[nr] = win
+  }, false);
+}
+
 
 class Create_Gui {
   

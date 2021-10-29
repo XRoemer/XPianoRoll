@@ -94,3 +94,12 @@ function round_to_multiple(val,multi){
   var div = Math.round(val / multi) 
   return res = div * multi / shift
 }
+
+function copy_settings(new_item,old_item){
+  var objEntries = Object.entries(old_item);
+  log(objEntries)
+  for (var i = 0; i < objEntries.length; i++) {
+      new_item[objEntries[i][0]] = objEntries[i][1]
+
+    }
+}

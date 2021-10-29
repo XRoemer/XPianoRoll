@@ -155,7 +155,7 @@ class Main_Gui {
     open_win(x,y,390,220,'midi_win',"midi/midi.html", midi_dialog.create_midi_dialog)
   }
   call_test() {
-    load_scripts_otf({fkt:'test',scripts:['test/test'],args:[]})
+    load_scripts_otf({fkt:'test',scripts:['tools/test'],args:[]})
   }
   show_mouse_pos(bar, micro, cent, row) {
     var lbl = document.getElementById('mouse')

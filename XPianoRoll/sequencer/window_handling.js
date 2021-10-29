@@ -5,34 +5,47 @@ window.onmouseup = window_mouseup;
 window.onwheel = scroll_window_by_wheel;
 window.onscroll = correct_positions
 
-//window.onbeforeunload = close_window
-
 
 var win = nw_gui.Window.get()
 
-win.on('minimize', function() {
-  console.log('Window is minimized',win);
-});
-
+// closing main window
 win.on('close', function() {
-  win.removeAllListeners('close');
-  log('close', open_windows,window.win_nr)
-  delete open_windows[window.win_nr]
-  //win.minimize()
-  //setTimeout(function(){ win.close(true); }, 3000);
-  win.close()
-  
+    var x = window.screenX + 50
+    var y = window.screenY + 50
+    log(window)
+    open_win(x,y,390,220,'midi_win',"midi/midi.html", create_close_dialog)
 });
 
-function close_window(e){
-  //window.removeAllListeners('close');
-  log('close', open_windows,window.win_nr)
-  delete open_windows[window.win_nr]
-  //win.minimize()
-  setTimeout(function(){ window.close(); }, 3000);
+function create_close_dialog() {
+    var doc = window.midi_win.document
+    doc.title = "close main window"
+    var cnv = doc.getElementById('midi_cnv')
+    var ctx = cnv.getContext('2d')
+    ctx.fillStyle = 'rgba(245, 245, 215, 1)'
+    ctx.fillRect(0,0, 420,220)
 
+    var ctrl_cont = doc.getElementById('midi_div')
+    ctrl_cont.appendChild(sf.create_label(100, 15, 'WARNING', 12))
+    ctrl_cont.appendChild(sf.create_label(20, 40, 
+        'This window is needed for all Piano Rolls to function correctly.', 10))
+    ctrl_cont.appendChild(sf.create_label(20, 62, 
+        'You will have to send all data again.', 10))
+    ctrl_cont.appendChild(sf.create_label(20, 84, 
+        'Proceed?', 10))
+    ctrl_cont.appendChild(sf.create_btn(20, 106, 12, 'yes', close_main_win));
+    ctrl_cont.appendChild(sf.create_label(38, 106, 'yes', 10))    
+    ctrl_cont.appendChild(sf.create_btn(70,106, 12, 'midi_dialog.midi_to_player',dont_close_main_win));
+    ctrl_cont.appendChild(sf.create_label(88, 106, 'no', 10))
+  }
+
+function close_main_win(e){
+    e.view.close(true)
+    win.close(true) 
 }
-
+function dont_close_main_win(e){
+	log(e)
+	e.view.close(true)
+}
 
 function correct_positions(e) {
   // correct elements which need to keep their position

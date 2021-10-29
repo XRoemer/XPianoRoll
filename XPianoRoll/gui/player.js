@@ -65,6 +65,13 @@ class Player {
     btn.setAttribute("transform", attr);
     btn.addEventListener("click", e => {this.btn_triggered('scroll_window')});
     player_div.appendChild(btn)
+    
+    if (test == false) return
+    x += xx + xx
+    var btn = sf.create_player_btn(x, h, 300 ,300, w, svg_str.stop_btn_str,'test','player_svg')
+    btn.setAttribute("transform", attr);
+    btn.addEventListener("click", e => {this.btn_triggered('test')});
+    player_div.appendChild(btn)
   }
 
   set_col_inactive(type) {
@@ -125,6 +132,10 @@ class Player {
       pointer.scroll_window = !pointer.scroll_window
       if (pointer.scroll_window) {this.set_col_active(type)}
       else {this.set_col_inactive(type)}
+    }
+    else if(type == "test") {
+      load_scripts_otf({fkt:'test',scripts:['tools/test'],args:[]})
+      
     }
   }
 }
