@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2082.0, 312.0, 949.0, 581.0 ],
+		"rect" : [ 131.0, 138.0, 949.0, 581.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -88,12 +88,12 @@
 								"box" : 								{
 									"fontsize" : 14.0,
 									"id" : "obj-2",
-									"linecount" : 16,
+									"linecount" : 13,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 100.0, 65.0, 324.0, 264.0 ],
-									"text" : "ISSUES\n\n- When a pianoroll is closed, all information is lost. That's because all information is stored inside the specific browser window. A solution would be to start a separate nw process to handle all data. For now the user has to store the data himself and send it again on reopening a pianoroll.\n\n- when a pianoroll is closed no new rolls can be opened. \n\n- sometimes the connection gets lost -> press connect button next to the patcher [p open_gui]\n\n- on change of properties items are not redrawn"
+									"patching_rect" : [ 100.0, 65.0, 324.0, 216.0 ],
+									"text" : "ISSUES\n\n- When the main piano roll is closed, all information is lost. That's because all information is stored inside the specific browser window.\n\n- sometimes the connection gets lost -> press [connect] button next to the patcher [p open_gui]\n\n- on change of properties items are not redrawn\n\n- parameter values are from 1 to 128 instead 0 to 127. Has to be changed."
 								}
 
 							}
@@ -101,7 +101,7 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 565.5, 412.0, 53.0, 22.0 ],
+					"patching_rect" : [ 565.5, 407.0, 53.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -241,13 +241,13 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-7",
-									"linecount" : 14,
+									"linecount" : 18,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 59.0, 222.0, 59.0, 202.0 ],
-									"text" : "32 35 32 54 32 109 101 109 111 114 121 32 99 104 97 110 103 101 32 50 32 118 111 108 32 56 51 32 42 32"
+									"patching_rect" : [ 59.0, 222.0, 59.0, 257.0 ],
+									"text" : "32 35 32 51 32 115 101 116 116 105 110 103 115 32 112 97 114 97 109 101 116 101 114 115 32 115 101 116 32 92 32 48 32 49 50 56 32 49 32 42 32"
 								}
 
 							}
@@ -825,7 +825,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 2151.0, 114.0, 764.0, 459.0 ],
+						"rect" : [ 2090.0, 209.0, 764.0, 459.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -854,6 +854,17 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 431.0, 57.0, 202.0, 20.0 ],
+									"text" : "Example for moving the transport "
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-44",
 									"maxclass" : "comment",
@@ -1702,12 +1713,12 @@
 								"box" : 								{
 									"fontface" : 1,
 									"id" : "obj-2",
-									"linecount" : 39,
+									"linecount" : 40,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 92.0, 40.0, 446.0, 558.0 ],
-									"text" : "The pianoroll is a gui for handling midi notes. It's not a sequencer itself.\nBut you can control your sequencer by clicking play, pause, etc. from the gui\n\nEvery Item has an unique id.\n\nThere a three messages from Items:\n\n1) Create a new Item\n\n\"0 memory new 0 7 2 4 0 0 1 0 96\" means:\npianoroll 0\nmemory \nnew (new Item)\n0 id\n7 pitch\n2 4 0 position: bar 2, beat 4, cent 0\n0 1 0 length: 0 bars, 1 beat, 0 cents\n96 volume\n\n2) Delete Item\n\n\"0 memory del 0\" means:\npianoroll 0\nmemory\ndel 0 delete Item with id 0\n\n3) Change Item\n\n\"0 memory change 0 len 0 1 34\" means:\npianoroll 0\nmemory \nchange 0: change item with id 0\nlen 0 1 34: new len\n\nother possible changes are: pos and vol \n(and further existing attributes, but that's not fully implemented yet)\n\n\n"
+									"patching_rect" : [ 92.0, 40.0, 446.0, 572.0 ],
+									"text" : "The pianoroll is a gui for handling midi notes. It's not a sequencer itself.\nBut you can control your sequencer by clicking play, pause, etc. from the gui\n\nEvery Item has an unique id.\n\nThere a three messages from Items:\n\n1) Create a new Item\n\n\"0 memory new 0 7 2 4 0 0 1 0 96\" means:\npianoroll 0\nmemory \nnew (new Item)\n0 id\n7 pitch\n2 4 0 position: bar 2, beat 4, cent 0\n0 1 0 length: 0 bars, 1 beat, 0 cents\n96 volume\n\n2) Delete Item\n\n\"0 memory del 0\" means:\npianoroll 0\nmemory\ndel 0 delete Item with id 0\n\n3) Change Item\n\n\"0 memory change 0 len 0 1 34\" means:\npianoroll 0\nmemory \nchange 0: change item with id 0\nlen 0 1 34: new length\n\nother possible changes are: pos, vol and parameters. you can give parameters a name and set values from 0 - 127. the amount of parameters is not limited.\n\n\n"
 								}
 
 							}
@@ -1856,7 +1867,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 590.0, 228.0, 223.0, 22.0 ],
-					"text" : "6 memory change 2 vol 83"
+					"text" : "3 settings parameters set  0 128 1"
 				}
 
 			}
@@ -2079,7 +2090,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 121.5, 246.5, 50.0, 22.0 ],
-					"text" : "6"
+					"text" : "3"
 				}
 
 			}
@@ -5256,12 +5267,12 @@
 								"box" : 								{
 									"fontface" : 1,
 									"id" : "obj-4",
-									"linecount" : 21,
+									"linecount" : 20,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 675.0, 57.0, 238.0, 310.0 ],
-									"text" : "Example for setting a note:\n1 27 2 1 0 0 0 10 79 sand 45 what 56\n\nExplanation:\n1 id\n\n27 pitch\n\n2 1 0 start = bar 2, beat 1, cent 0\n\n0 0 10 length = bar 0, beat 0, cent 10\n\n79 vol\n\nsand 45 a parameter\n\nwhat 56 another parameter \n\nparamters can be any name with a value between 0-127). You can set as much as you want.\n"
+									"patching_rect" : [ 675.0, 57.0, 238.0, 282.0 ],
+									"text" : "Example for setting a note:\n1 27 2 1 0 0 0 10 79 sand 45 what 56\n\nExplanation:\n1 id\n\n27 pitch\n\n2 1 0 start = bar 2, beat 1, cent 0\n\n0 0 10 length = bar 0, beat 0, cent 10\n\n79 vol\n\nsand 45 a parameter\n\nwhat 56 another parameter \n\nparamters can be any name with a value between 0-127. "
 								}
 
 							}
