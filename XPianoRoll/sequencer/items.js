@@ -37,14 +37,17 @@ class Items {
       var [cent, len_bar, len_micro, len_cent, vol] = val.slice(4).map( z => z * 1 )
 
       var pars = val.slice(9)
+
+      
       if (pars.length > 1) {
 	      for (var j = 0; j < pars.length / 2; j++){
-			[par, val] = [pars[j*2], pars[j*2 + 1]]
-			item.set_param(par, val)
-			if (!(par in params)){
-			     params.create_new_par(par)
-			}
-		   }
+    			[par, val] = [pars[j*2], pars[j*2 + 1]]
+          if (!par || !val) continue
+    			item.set_param(par, val)
+    			if (!(par in params)){
+    			     params.create_new_par(par)
+			     }
+		      }
         }
 
       var x = midi2posX(bar - 1, micro - 1, cent)

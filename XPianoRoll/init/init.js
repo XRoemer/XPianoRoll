@@ -8,24 +8,24 @@ nw_gui.App.on('open', function (argString) {
   
   argString = argString.split(' ')
   var nr = argString[argString.length - 1]
-  //log("open new win from main",nr)
+  
 
   if (!open_windows[nr]) {
-    if (get_win_with_lowest_id()) open_new_sequencer_window(nr)
+    log("open new win from main",nr)
+    if (get_main_window()) open_new_sequencer_window(nr)
   }
   else {
-    if (open_windows[nr].closed && get_win_with_lowest_id()) {
-      log("win nr",nr," ist geschlossen")
+    if (open_windows[nr].closed && get_main_window()) {
+      log("reopen_sequencer_window",nr)
     	reopen_sequencer_window(nr)
     }
   }
 });
 
-function get_win_with_lowest_id() {
-  var keys = Object.keys(open_windows)
-  keys.sort()
-  var nr = window.win_nr
-  if (nr == keys[0]) return true
+function get_main_window() {
+
+  var t = window.document.title.split(" ")
+  if (t[2] == "Main") return true
   else return false
 }
 
@@ -56,7 +56,7 @@ function init_main_win(){
     }
     catch(e) {log('error: no window')}
   });
-  init_new_win()
+  init_new_win(nr)
 }
 
 function init_closed_win(nr){
@@ -83,11 +83,21 @@ function init_closed_win(nr){
   var val_array = []
   var dic = old_win.items.dict
   var vals = Object.values(dic);
-
+  
   for (var i = 0; i < vals.length; i++) {
     var v = vals[i]
-    val_array.push([v.id,v.row,v.bar,v.micro,v.cent,v.len_bar,
-                    v.len_micro,v.len_cent,v.vol])      
+    var va = [v.id,v.row,v.bar,v.micro,v.cent,v.len_bar,
+                    v.len_micro,v.len_cent,v.vol]
+    var para = []
+    var p = Object.entries(v.params);
+    log(p,p.length)
+    log(v)
+    if (p.length > 1) {
+	    for (var i = 0; i < p.length; i++) {
+	        va.push( p[i][0], p[i][1][0] )
+	    }
+	}
+    val_array.push(va)      
   }
   
   items.set_items(val_array)
@@ -130,7 +140,9 @@ function open_new_sequencer_window(nr) {
 
 
 function reopen_sequencer_window(nr) {
+    log(open_windows,nr)
   var old_win = open_windows[nr]
+  
   var x = old_win.win_w
   var y = old_win.win_h
   var path = 'index.html'
@@ -143,7 +155,6 @@ function reopen_sequencer_window(nr) {
     win.win_nr = nr
     win['open_windows'] = open_windows
     win.tcp = tcp
-    //open_windows[nr] = win
   }, false);
 }
 

@@ -3,6 +3,7 @@ const net = require('net');
 var Tcp = class TCP {
 
   constructor() {
+  log("tcp init")
     this.server = net.createServer((c) => {
       // 'connection' listener
       var name = 'Address: ' + c.remoteAddress + " Port: " + c.localPort
@@ -17,6 +18,7 @@ var Tcp = class TCP {
 
     });
     this.server.on('error', (err) => {
+      console.log('server error',err);
       throw err;
     });
     this.server.listen(8150, () => {

@@ -1,5 +1,5 @@
 function test(arg) {
-	log(open_windows,items)
+	log(open_windows)
 	/*var objEntries = Object.entries(open_windows);
 	log(objEntries)
 	for (var i = 0; i < objEntries.length; i++) {
