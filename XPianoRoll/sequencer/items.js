@@ -44,8 +44,8 @@ class Items {
     			[par, val] = [pars[j*2], pars[j*2 + 1]]
           if (!par || !val) continue
     			item.set_param(par, val)
-    			if (!(par in params)){
-    			     params.create_new_par(par)
+    			if (!(par in params.params)){
+    			     params.insert_par([par,1,128,1])
 			     }
 		      }
         }

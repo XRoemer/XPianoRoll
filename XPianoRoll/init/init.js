@@ -79,27 +79,23 @@ function init_closed_win(nr){
   gui.init_div_positions()
   open_windows[nr] = this
   
-  
   var val_array = []
   var dic = old_win.items.dict
   var vals = Object.values(dic);
-  
+
   for (var i = 0; i < vals.length; i++) {
     var v = vals[i]
     var va = [v.id,v.row,v.bar,v.micro,v.cent,v.len_bar,
                     v.len_micro,v.len_cent,v.vol]
     var para = []
     var p = Object.entries(v.params);
-    log(p,p.length)
-    log(v)
-    if (p.length > 1) {
-	    for (var i = 0; i < p.length; i++) {
-	        va.push( p[i][0], p[i][1][0] )
+    if (p.length > 0) {
+	    for (var j = 0; j < p.length; j++) {
+	        va.push( p[j][0], p[j][1][0] )
 	    }
 	}
     val_array.push(va)      
   }
-  
   items.set_items(val_array)
   items.adjust_items()
 }

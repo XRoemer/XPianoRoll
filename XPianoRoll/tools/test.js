@@ -7,5 +7,5 @@ function test(arg) {
     }*/
     var dic = items.dict
     var vals = Object.values(dic);
-    log(dic,vals)
+    log(items)
 }

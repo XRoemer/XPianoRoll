@@ -1126,12 +1126,12 @@
 								"box" : 								{
 									"fontsize" : 14.0,
 									"id" : "obj-2",
-									"linecount" : 11,
+									"linecount" : 12,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 100.0, 65.0, 324.0, 184.0 ],
-									"text" : "ISSUES\n\n- Parameters are still not working\n\n- sometimes the connection gets lost -> press [connect] button next to the patcher [p open_gui]\n\n- on change of properties items are not redrawn\n\n- parameter values are from 1 to 128 instead 0 to 127. Has to be changed."
+									"patching_rect" : [ 100.0, 65.0, 324.0, 200.0 ],
+									"text" : "ISSUES\n\n- display of mute/solo buttons after setting props not working correctly\n\n- sometimes the tcp connection of client gets lost -> press [connect] button \n\n- on change of properties items are not redrawn\n\n- parameter values are from 1 to 128 instead 0 to 127. Has to be changed."
 								}
 
 							}
@@ -1139,7 +1139,7 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 565.5, 395.0, 53.0, 22.0 ],
+					"patching_rect" : [ 565.5, 405.0, 53.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1258,7 +1258,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 72.0, 278.0, 114.0, 22.0 ],
-									"text" : "127.0.0.1 60993"
+									"text" : "127.0.0.1 62095"
 								}
 
 							}
@@ -2851,7 +2851,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 590.0, 228.0, 223.0, 22.0 ],
-					"text" : "0 settings parameters set what 0 128 1"
+					"text" : "3 memory clear"
 				}
 
 			}
@@ -2863,7 +2863,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 121.5, 246.5, 50.0, 22.0 ],
-					"text" : "0"
+					"text" : "3"
 				}
 
 			}
@@ -4041,11 +4041,11 @@
 									"patching_rect" : [ 289.0, 674.0, 56.0, 22.0 ],
 									"restore" : 									{
 										"live.button" : [ 0.0 ],
-										"live.dial" : [ 16.0 ],
+										"live.dial" : [ 4.0 ],
 										"live.dial[1]" : [ 4.0 ],
 										"live.dial[2]" : [ 90.0 ],
-										"live.dial[4]" : [ 50.0 ],
-										"live.numbox" : [ 5000.0 ],
+										"live.dial[4]" : [ 4.0 ],
+										"live.numbox" : [ 687.0 ],
 										"live.numbox[10]" : [ 108.0 ],
 										"live.numbox[11]" : [ 2.0 ],
 										"live.numbox[12]" : [ 21.0 ],
@@ -4055,10 +4055,10 @@
 										"live.numbox[16]" : [ 0.0 ],
 										"live.numbox[17]" : [ 1.0 ],
 										"live.numbox[18]" : [ 5.0 ],
-										"live.numbox[19]" : [ 30.0 ],
-										"live.numbox[1]" : [ 500.0 ],
-										"live.numbox[2]" : [ 1000.0 ],
-										"live.numbox[3]" : [ 735.0 ],
+										"live.numbox[19]" : [ 35.0 ],
+										"live.numbox[1]" : [ 90.0 ],
+										"live.numbox[2]" : [ 750.0 ],
+										"live.numbox[3]" : [ 300.0 ],
 										"live.numbox[4]" : [ 225.0 ],
 										"live.numbox[5]" : [ 226.0 ],
 										"live.numbox[6]" : [ 231.0 ],
@@ -4070,7 +4070,7 @@
 										"live.toggle[2]" : [ 1.0 ],
 										"live.toggle[3]" : [ 1.0 ],
 										"live.toggle[4]" : [ 1.0 ],
-										"live.toggle[5]" : [ 0.0 ],
+										"live.toggle[5]" : [ 1.0 ],
 										"textedit" : [ "example" ]
 									}
 ,
